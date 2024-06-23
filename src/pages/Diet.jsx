@@ -4,6 +4,7 @@ import { API_URL, config } from '../config/config';
 import { toast } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import ERROR from '../constants/ErrorConstants';
+import { Helmet } from 'react-helmet'
 
 const Diet = () => {
     const [height, setHeight] = useState('');
@@ -89,6 +90,11 @@ const Diet = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center py-10">
+            <Helmet>
+                <title>
+                    Diet Plan Request - Fitverse
+                </title>
+            </Helmet>
             <div className="max-w-4xl w-full p-8 bg-slate-300 shadow-lg rounded-lg">
                 <h2 className="text-3xl font-bold mb-4 text-center text-gray-800">Diet: Importance and Benefits</h2>
                 <p className="text-lg mb-6 text-gray-700 text-center">
@@ -222,7 +228,7 @@ const Diet = () => {
                     <div className="bg-white p-6 rounded shadow-lg">
                         <h3 className="text-lg font-bold mb-4">This feature is only for FitVerse users. Please login and try again.</h3>
                         <div className="flex justify-end space-x-4">
-                            <button 
+                            <button
                                 className="px-4 py-2 bg-gray-500 text-white rounded"
                                 onClick={() => setShowModal(false)}
                             >

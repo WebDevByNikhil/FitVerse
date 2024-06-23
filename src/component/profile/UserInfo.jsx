@@ -6,6 +6,7 @@ import ERRORS from '../../constants/ErrorConstants';
 import { toast } from 'react-hot-toast';
 import imageCompression from 'browser-image-compression';
 import { IoMdMail, IoMdPhonePortrait } from "react-icons/io";
+import { Helmet } from 'react-helmet'
 
 const UserInfo = () => {
     const { user } = useSelector((state) => state.auth);
@@ -15,7 +16,7 @@ const UserInfo = () => {
     const formatDate = (date) => {
         const options = { day: 'numeric', month: 'short', year: '2-digit' };
         return new Date(date).toLocaleDateString('en-US', options).replace(',', `'`);
-      };
+    };
 
     const handleUploadAvatar = async (event) => {
         const imageFile = event.target.files[0];
@@ -63,6 +64,11 @@ const UserInfo = () => {
 
     return (
         <div className='px-5'>
+            <Helmet>
+                <title>
+                    User Profile - Fitverse
+                </title>
+            </Helmet>
             <div className="relative flex flex-col w-full min-w-0 mb-6 break-words border border-dashed bg-clip-border rounded-2xl border-black bg-light/30 draggable">
                 <div className="px-9 pt-9 flex-auto min-h-[70px] pb-0 bg-transparent">
                     <div className="flex flex-wrap mb-6 xl:flex-nowrap">

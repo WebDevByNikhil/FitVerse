@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Loader from '../../common/Loader';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet'
 
 const DietPlans = () => {
     const [dietPlans, setDietPlans] = useState([]);
@@ -68,6 +69,11 @@ const DietPlans = () => {
 
     return (
         <div className="mx-auto p-6 rounded-lg">
+            <Helmet>
+                <title>
+                    Diet Plans - Fitverse
+                </title>
+            </Helmet>
             {loading ? (
                 <div className=' flex justify-center items-center'>
                     <div className=' w-10 h-10'>

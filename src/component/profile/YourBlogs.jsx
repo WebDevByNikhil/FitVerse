@@ -3,7 +3,8 @@ import axios from 'axios';
 import { API_URL, config } from '../../config/config';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import Loader from '../../common/Loader'; // Ensure you have a Loader component
+import Loader from '../../common/Loader';
+import { Helmet } from 'react-helmet'
 
 const YourBlogs = () => {
     const [blogs, setBlogs] = useState([]);
@@ -75,6 +76,11 @@ const YourBlogs = () => {
 
     return (
         <div className="mx-auto p-6 rounded-lg">
+            <Helmet>
+                <title>
+                    Your Blogs - Fitverse
+                </title>
+            </Helmet>
             <div className="flex flex-col md:flex-row justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold mb-4 md:mb-0">Your Blogs</h2>
                 <button

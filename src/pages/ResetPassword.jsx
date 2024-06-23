@@ -6,6 +6,7 @@ import { toast } from 'react-hot-toast'
 import { API_URL, config } from '../config/config';
 import Loader from '../common/Loader';
 import ERROR from '../constants/ErrorConstants';
+import { Helmet } from 'react-helmet'
 
 const ResetPassword = () => {
 
@@ -74,6 +75,11 @@ const ResetPassword = () => {
 
     return (
         <>
+            <Helmet>
+                <title>
+                    Reset Password - Fitverse
+                </title>
+            </Helmet>
             <div className='h-full w-auto bg-[#f7fafc]'>
                 <div className="inset-0 flex items-center justify-center z-50 p-10 sm:p-20">
                     <div className="bg-white rounded-lg p-4 sm:p-8 shadow-lg max-w-4xl w-full">
@@ -184,7 +190,7 @@ const ResetPassword = () => {
                                 {/* Reset button */}
                                 <div className='mt-4'>
                                     <button
-                                    className=" sm:px-4 px-1 py-1 rounded-md bg-red-500 text-white font-semibold shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                                        className=" sm:px-4 px-1 py-1 rounded-md bg-red-500 text-white font-semibold shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                                         onClick={resetPassword}
                                     >
                                         Reset Password

@@ -7,6 +7,7 @@ import { toast } from 'react-hot-toast';
 import { API_URL } from '../config/config';
 import Loader from '../common/Loader';
 import ERROR from '../constants/ErrorConstants';
+import { Helmet } from 'react-helmet'
 import VALIDATION from '../constants/ValidationsConstants';
 
 const ForgotPassword = () => {
@@ -16,12 +17,12 @@ const ForgotPassword = () => {
   const [resendTimer, setResendTimer] = useState(300);
   const [emailOrPhoneError, setEmailOrPhoneError] = useState('');
   const [otpError, setOtpError] = useState('');
-  const [loading, setLoading] = useState(false); // New state for loading
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [resetHash, setResetHash] = useState('');
   const [imageLoaded, setImageLoaded] = useState(false);
-  const timerIntervalRef = useRef(null); // Ref to store the timer interval
+  const timerIntervalRef = useRef(null);
 
   const sendOTP = () => {
     if (!email && !VALIDATION.EMAIL_REGEX.test(email)) {
@@ -30,9 +31,9 @@ const ForgotPassword = () => {
       setShowOTP(false);
       return;
     }
-    setLoading(true); // Start loading
+    setLoading(true);
     dispatch(forgotPasswordWithEmail({ email })).then((response) => {
-      setLoading(false); // Stop loading
+      setLoading(false);
       if (response.error) {
         toast.error(response.payload);
         dispatch(resetMessage());
@@ -45,7 +46,7 @@ const ForgotPassword = () => {
         dispatch(resetMessage());
       }
     }).catch(() => {
-      setLoading(false); // Stop loading in case of error
+      setLoading(false);
     });
   };
 
@@ -115,6 +116,11 @@ const ForgotPassword = () => {
 
   return (
     <>
+     <Helmet>
+        <title>
+          Forget Password - Fitverse
+        </title>
+      </Helmet>
       {loading && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-25">
           <div className=' w-20 h-20'>

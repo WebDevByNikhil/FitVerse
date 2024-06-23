@@ -1,20 +1,21 @@
 import React from 'react'
 import { toast } from 'react-hot-toast'
 import { TiDeleteOutline } from "react-icons/ti";
-import { useDispatch, useSelector} from 'react-redux'
-import {  deleteBMI, resetMessage} from '../../Redux/features/auth/authSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteBMI, resetMessage } from '../../Redux/features/auth/authSlice'
+import { Helmet } from 'react-helmet'
 
 
 const BMI = () => {
   const dispatch = useDispatch();
-  const {user} = useSelector((state)=> state.auth)
+  const { user } = useSelector((state) => state.auth)
   const BMIData = user?.BMIs;
 
 
 
   const handleDeleteBMI = (BMIId) => {
     dispatch(deleteBMI(BMIId)).then((response) => {
-      if(response.error){
+      if (response.error) {
         toast.error(response.payload);
         dispatch(resetMessage());
       } else {
@@ -25,14 +26,19 @@ const BMI = () => {
 
 
   return (
-   <>
-   <h1 className=' px-5'>Only latest 5 BMI are saved</h1>
-   {BMIData && BMIData.length === 0 ? (
-  <>
-    <p className='flex w-full justify-center py-4'>You do not have any saved BMI's</p>
-  </>
-) : (
-  <div className="flex flex-row sm:overflow-y-hidden sm:flex-wrap overflow-y-auto">
+    <>
+      <Helmet>
+        <title>
+          Your BMI - Fitverse
+        </title>
+      </Helmet>
+      <h1 className=' px-5'>Only latest 5 BMI are saved</h1>
+      {BMIData && BMIData.length === 0 ? (
+        <>
+          <p className='flex w-full justify-center py-4'>You do not have any saved BMI's</p>
+        </>
+      ) : (
+        <div className="flex flex-row sm:overflow-y-hidden sm:flex-wrap overflow-y-auto">
           {BMIData &&
             BMIData.map((BMI) => {
               const date = new Date(BMI?.date);

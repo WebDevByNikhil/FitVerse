@@ -6,6 +6,7 @@ import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import { API_URL, config } from '../../config/config';
 import { updateUser, getUser, changePassword } from '../../Redux/features/auth/authSlice';
+import { Helmet } from 'react-helmet'
 
 const AccountSetting = () => {
     const { user } = useSelector((state) => state.auth);
@@ -113,15 +114,15 @@ const AccountSetting = () => {
             return toast.error('Passwords do not match');
         }
 
-        dispatch(changePassword({oldPassword, newPassword, confirmPassword})).then((response) =>{
-            if(response.payload.success){
+        dispatch(changePassword({ oldPassword, newPassword, confirmPassword })).then((response) => {
+            if (response.payload.success) {
                 toast.success(response.payload.message);
                 setEditPassword(false);
                 setOldPassword('');
                 setNewPassword('');
                 setConfirmPassword('');
             }
-            else{
+            else {
                 toast.error(response.payload.message);
             }
         })
@@ -130,9 +131,14 @@ const AccountSetting = () => {
     const handleCancelPassword = () => setEditPassword(false);
 
     return (
-        <div className="rounded-lg px-5 ">  
+        <div className="rounded-lg px-5 ">
+            <Helmet>
+                <title>
+                    Account Setting - Fitverse
+                </title>
+            </Helmet>
             <div className=" shadow overflow-hidden sm:rounded-lg">
-             
+
                 <div className="">
                     <dl>
                         <div className=" px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -218,31 +224,31 @@ const AccountSetting = () => {
                             <div className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 flex items-center gap-2">
                                 {editPassword ? (
                                     <>
-                                    <div className='flex flex-col sm:w-1/2 w-full gap-2'>
-                                        <input
-                                            type="password"
-                                            placeholder="Old Password"
-                                            value={oldPassword}
-                                            onChange={(e) => setOldPassword(e.target.value)}
-                                            className="w-full p-2 border border-gray-300 rounded mb-2"
+                                        <div className='flex flex-col sm:w-1/2 w-full gap-2'>
+                                            <input
+                                                type="password"
+                                                placeholder="Old Password"
+                                                value={oldPassword}
+                                                onChange={(e) => setOldPassword(e.target.value)}
+                                                className="w-full p-2 border border-gray-300 rounded mb-2"
                                             />
-                                        <input
-                                            type="password"
-                                            placeholder="New Password"
-                                            value={newPassword}
-                                            onChange={(e) => setNewPassword(e.target.value)}
-                                            className="w-full p-2 border border-gray-300 rounded mb-2"
+                                            <input
+                                                type="password"
+                                                placeholder="New Password"
+                                                value={newPassword}
+                                                onChange={(e) => setNewPassword(e.target.value)}
+                                                className="w-full p-2 border border-gray-300 rounded mb-2"
                                             />
-                                        <input
-                                            type="password"
-                                            placeholder="Confirm Password"
-                                            value={confirmPassword}
-                                            onChange={(e) => setConfirmPassword(e.target.value)}
-                                            className="w-full p-2 border border-gray-300 rounded mb-2"
+                                            <input
+                                                type="password"
+                                                placeholder="Confirm Password"
+                                                value={confirmPassword}
+                                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                                className="w-full p-2 border border-gray-300 rounded mb-2"
                                             />
-                                        <button className="px-2 py-1 bg-green-500 text-white rounded" onClick={handleSavePassword}>Save</button>
-                                        <button className="px-2 py-1 bg-red-500 text-white rounded" onClick={handleCancelPassword}>Cancel</button>
-                                            </div>
+                                            <button className="px-2 py-1 bg-green-500 text-white rounded" onClick={handleSavePassword}>Save</button>
+                                            <button className="px-2 py-1 bg-red-500 text-white rounded" onClick={handleCancelPassword}>Cancel</button>
+                                        </div>
                                     </>
                                 ) : (
                                     <>

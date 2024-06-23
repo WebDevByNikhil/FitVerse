@@ -3,10 +3,16 @@ import { FaCalculator } from "react-icons/fa";
 import { FaBlogger } from "react-icons/fa";
 import { FaSave } from "react-icons/fa";
 import { MdEmojiFoodBeverage } from "react-icons/md";
+import { Helmet } from 'react-helmet'
 
 const About = () => {
   return (
     <div>
+      <Helmet>
+        <title>
+          About Us - Fitverse
+        </title>
+      </Helmet>
       <section className="relative py-16 bg-blueGray-50">
         <div className="container mx-auto">
           <div className="flex flex-wrap items-center">
@@ -29,7 +35,7 @@ const About = () => {
                   <div className="relative flex flex-col mt-4">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                      <FaCalculator className=' text-2xl'/>
+                        <FaCalculator className=' text-2xl' />
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">BMI Calculator</h6>
                       <p className="mb-4 text-blueGray-500">
@@ -40,7 +46,7 @@ const About = () => {
                   <div className="relative flex flex-col min-w-0">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                      <FaSave className=' text-2xl'/>
+                        <FaSave className=' text-2xl' />
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">
                         Save Your Data
@@ -55,7 +61,7 @@ const About = () => {
                   <div className="relative flex flex-col min-w-0 mt-4">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                      <FaBlogger className=' text-2xl'/>
+                        <FaBlogger className=' text-2xl' />
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">Influencer Blogs</h6>
                       <p className="mb-4 text-blueGray-500">
@@ -66,7 +72,7 @@ const About = () => {
                   <div className="relative flex flex-col min-w-0">
                     <div className="px-4 py-5 flex-auto">
                       <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                      <MdEmojiFoodBeverage className=' text-2xl'/>
+                        <MdEmojiFoodBeverage className=' text-2xl' />
                       </div>
                       <h6 className="text-xl mb-1 font-semibold">Diet Plans</h6>
                       <p className="mb-4 text-blueGray-500">

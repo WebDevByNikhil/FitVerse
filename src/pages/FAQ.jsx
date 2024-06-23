@@ -1,8 +1,14 @@
 import React from 'react';
+import { Helmet } from 'react-helmet'
 
 const FAQ = () => {
   return (
     <div>
+      <Helmet>
+        <title>
+          FAQ - Fitverse
+        </title>
+      </Helmet>
       <section className="relative pt-16 bg-blueGray-50">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center text-center mb-24">
